@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root{
+    --color-title: #ffffff;
+    --color-fundo-background: #000000;
+    --color-style: rgb(251, 255, 27)
+}
