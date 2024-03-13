@@ -10,3 +10,28 @@
     --color-fundo-background: #000000;
     --color-style: rgb(251, 255, 27)
 }
+
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media  screen and (max-width: 1200px) {
+    
+    .produtos{
+        gap: 10rem;
+    }
+}

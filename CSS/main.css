@@ -1,0 +1,31 @@
+
+main{
+    background-color: #8d8d8d;
+    height: 130vh;
+    padding: 6rem 0;
+    justify-content: center;
+}
+
+.imagens_promocionais{
+    background-image:url(/Components/main/image-carrocel1.jpg);
+    background-size: cover;
+    height: 20rem;
+    border: solid 1px var(--color-fundo-background);
+    margin-bottom: 1rem;
+}
+
+.produtos{
+    background-color: rgb(209, 207, 207);
+    height: 100%;
+    border: solid 1px var(--color-fundo-background);
+    display: flex;
+    padding: 5rem 1rem;
+    gap: 15rem;
+    justify-content: center;
+}
+
+.produtos div{
+    width: 325px;
+    height: 500px;
+    background-color: brown;
+}
