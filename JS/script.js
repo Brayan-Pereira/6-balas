@@ -12,6 +12,3 @@ btnOn.addEventListener("click", () =>{
 btnOff.addEventListener("click", () =>{
     menu.style.display= "none"
 } )
-
-
-
