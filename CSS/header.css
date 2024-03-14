@@ -4,7 +4,7 @@ header {
     align-items: center;
     justify-content: space-around;
     background-color: var(--color-fundo-background);
-    height: 15vh;
+    height: 20vh;
     width: 100vW;
     border-bottom: double 7.5px var(--color-style);
     z-index: 20;
@@ -13,6 +13,9 @@ header {
 header h1{
     color: var(--color-title);
    
+}
+.logo img{
+    width: 150px;
 }
 
 nav {
