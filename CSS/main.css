@@ -1,31 +1,55 @@
-
-main{
-    background-color: #8d8d8d;
+main {
     height: 130vh;
-    padding: 6rem 0;
-    justify-content: center;
+    width: 100vw;
+    background-color: rgb(20, 20, 20);
+
 }
 
-.imagens_promocionais{
-    background-image:url(/Components/main/image-carrocel1.jpg);
-    background-size: cover;
-    height: 20rem;
-    border: solid 1px var(--color-fundo-background);
-    margin-bottom: 1rem;
-}
-
-.produtos{
-    background-color: rgb(209, 207, 207);
-    height: 100%;
-    border: solid 1px var(--color-fundo-background);
+.carousel {
+    position: absolute;
     display: flex;
-    padding: 5rem 1rem;
-    gap: 15rem;
-    justify-content: center;
+    height: 50vh;
+    top: 20%;
+    cursor: pointer;
 }
 
-.produtos div{
-    width: 325px;
-    height: 500px;
-    background-color: brown;
+.carousel button {
+    background-color: var(--color-fundo-background);
+    opacity: 0.5;
+    width: 5rem;
+    height: 5rem;
+    margin: 6rem 1rem;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+.produtos {
+    position: absolute;
+    background-color: var(--color-fundo-background);
+    color: var(--color-title);
+    width: 100vw;
+    top: 70%;
+    padding: 3rem;
+
+}
+
+.item {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 1rem 0;
+}
+
+.item div {
+    width: 300px;
+    height: 300px;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
 }
