@@ -5,11 +5,14 @@ main {
 
 }
 
-.carousel {
+.opcoes_admin, .carousel {
     position: absolute;
+    top: 20%;
+}
+
+.carousel {
     display: flex;
     height: 50vh;
-    top: 20%;
     cursor: pointer;
 }
 
@@ -21,11 +24,6 @@ main {
     margin: 6rem 1rem;
     border-radius: 50%;
 }
-
-
-
-
-
 
 .produtos {
     position: absolute;
@@ -42,6 +40,7 @@ main {
     width: 100%;
     justify-content: space-around;
     padding: 1rem 0;
+    flex-wrap: wrap;
 }
 
 .item div {
@@ -52,4 +51,26 @@ main {
 .item img {
     width: 100%;
     height: 100%;
+}
+
+.opcoes_admin{
+    padding: 2rem 3rem;
+    color: var(--color-title);
+    gap: 2rem;
+    text-align: center;
+}
+
+.opcoes_admin button{
+    padding: 1rem 2rem;
+    font-size: 20px;
+    margin: 2rem 1rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-color: var(--color-fundo-background);
+    color: var(--color-title);
+}
+
+.opcoes_admin button:hover{
+    border-color: var(--color-style);
+    color: var(--color-style);
 }

@@ -12,6 +12,7 @@ header {
 
 header h1{
     color: var(--color-title);
+    font-weight: 400;
    
 }
 .logo img{
@@ -63,13 +64,17 @@ a {
     justify-content: space-between;
 }
 
+.menu_hamburger ul{
+    padding: 0 2rem;
+}
+
 .menu_hamburger li{
     padding: 10px;
     border-bottom: solid 1px var(--color-style); 
 }
 
 
-.material-symbols-outlined{
+header .material-symbols-outlined{
     font-size: 36px;
     cursor: pointer;
 }
