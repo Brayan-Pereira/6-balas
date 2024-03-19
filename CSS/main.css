@@ -74,3 +74,40 @@ main {
     border-color: var(--color-style);
     color: var(--color-style);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width : 1400px){
+    .produtos {
+        top: 70%;
+    }
+}
+
+@media (max-width : 1100px){
+    .produtos {
+        top: 60%;
+    }
+}
+
+@media (max-width : 800px){
+    .produtos {
+        top: 50%;
+    }
+}
+
+@media (max-width : 500px){
+    .produtos {
+        top: 40%;
+    }
+}
