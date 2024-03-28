@@ -4,17 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Funcionarios</title>
+    <title>Formulário de Funcionários</title>
+    <style>
+        /* Adicione estilos CSS aqui, se necessário */
+    </style>
 </head>
 
 <body>
 
-    <form action="#">
+    <form action="#" method="post">
         <div class="form-header">
             <div class="title">
                 <h1>CADASTRE-SE</h1>
                 <div class="login-button">
-                    <button><a href="#">Entrar</a></button>
+                    <a href="#">Entrar</a>
                 </div>
             </div>
         </div>
@@ -45,20 +48,18 @@
             </div>
 
             <div class="input-box">
-                <label for="datanascimento">Data/Nascimento</label>
-                <input id="datanascimento" type="date" name="datanascimento" placeholder="Digite sua Data de Nascimento"
-                    required>
+                <label for="datanascimento">Data de Nascimento</label>
+                <input id="datanascimento" type="date" name="datanascimento" required>
             </div>
 
             <div class="input-box">
-                <label for="estadocivil">ESTADO CIVIL</label>
+                <label for="estadocivil">Estado Civil</label>
                 <input id="estadocivil" type="text" name="estadocivil" placeholder="Digite seu Estado Civil" required>
             </div>
 
             <div class="input-box">
                 <label for="grauinstrucao">Grau de Instrução</label>
-                <input id="grauinstrucao" type="text" name="grauinstrucao" placeholder="Digite seu Grau de Instrução"
-                    required>
+                <input id="grauinstrucao" type="text" name="grauinstrucao" placeholder="Digite seu Grau de Instrução" required>
             </div>
 
             <div class="input-box">
@@ -67,9 +68,8 @@
             </div>
 
             <div class="input-box">
-                <label for="cartdetrabalho">Cart.Trabalho</label>
-                <input id="cartdetrabalho" type="text" name="cartdetrabalho" placeholder="Digite sua Cart de Trabalho"
-                    required>
+                <label for="cartdetrabalho">Carteira de Trabalho</label>
+                <input id="cartdetrabalho" type="text" name="cartdetrabalho" placeholder="Digite sua Carteira de Trabalho" required>
             </div>
         </div>
 
@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="continue-button">
-                    <button><a href="#">Continuar</a></button>
+                    <button type="submit">Continuar</button>
                 </div>
             </div>
         </div>
