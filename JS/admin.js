@@ -9,9 +9,9 @@ function verificacao() {
     let password = prompt('Informe a senha do adminstrador:')
 
     if(user==userAdmin && password==passwordAdmin){
-        window.location.href= '/Pages/admin/admin.html';
+        window.location.href= 'http://localhost/6-BALAS/Pages/admin/admin.html';
     }else{
         alert('Usuário ou senha incorretos!!!')
-        window.location.href= '/index.html';
+        window.location.href= 'localhost/6-balas/index.html';
     }
 }
