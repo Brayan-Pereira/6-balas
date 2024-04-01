@@ -1,0 +1,9 @@
+body{
+    background-color: var(--color-fundo-background);
+}
+
+.login{
+    display: flex;
+    margin: 10rem auto;
+}
+
