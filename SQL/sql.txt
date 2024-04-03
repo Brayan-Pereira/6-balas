@@ -41,3 +41,11 @@ CREATE TABLE funcionarios (
     cartdetrabalho VARCHAR(20) NOT NULL,
     gender ENUM('Feminino', 'Masculino', 'Outros', 'Prefiro não dizer') NOT NULL
 );
+
+CREATE TABLE insumos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codfornecedor INT,
+    insumo VARCHAR(50) NOT NULL,
+    quantidade VARCHAR(20) NOT NULL,
+    FOREIGN KEY (codfornecedor) REFERENCES fornecedores(id)
+);
