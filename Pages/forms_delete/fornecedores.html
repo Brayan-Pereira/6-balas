@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="fornecedores.css">
+    <title>Deletar Fornecedor</title>
+    <style>
+        /* Adicione estilos CSS aqui, se necessário */
+    </style>
+</head>
+<body>
+    <div class="formfornecedor">
+        <form action="http://localhost/6-BALAS/DB_php/DELETE/deletar_fornecedores.php" method="post">
+            <div class="form-header">
+                <div class="title">
+                    <h1 class="titulo">DELETAR FORNECEDOR</h1>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="nomefornecedor">ID do Fornecedor a ser deletado</label>
+                    <input id="nomefornecedor" type="text" name="id_fornecedor" placeholder="ID do Fornecedor" required>
+                </div>
+
+                <div class="comprar-button">
+                    <button type="submit">DELETAR</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

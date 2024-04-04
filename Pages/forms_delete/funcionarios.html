@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="funcionarios.css">
+    <title>Deletar Funcionário</title>
+    <style>
+        /* Adicione estilos CSS aqui, se necessário */
+    </style>
+</head>
+<body>
+    <div class="formfuncionario">
+        <form action="http://localhost/6-BALAS/DB_php/DELETE/deletar_funcionarios.php" method="post">
+            <div class="form-header">
+                <div class="title">
+                    <h1 class="titulo">DELETAR FUNCIONÁRIO</h1>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="nomefuncionario">ID do Funcionário a ser deletado</label>
+                    <input id="nomefuncionario" type="text" name="id_funcionario" placeholder="ID do Funcionário" required>
+                </div>
+
+                <div class="comprar-button">
+                    <button type="submit">DELETAR</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

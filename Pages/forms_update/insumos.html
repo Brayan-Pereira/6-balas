@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Insumo</title>
+</head>
+<body>
+    <h2>Atualizar Insumo</h2>
+    <form action="http://localhost/6-BALAS/DB_php/UPDATE/update_insumo.php" method="POST">
+        <label for="id">ID do Insumo:</label>
+        <input type="text" id="id" name="id" required><br><br>
+        
+        <label for="codfornecedor">Código do Fornecedor:</label>
+        <input type="text" id="codfornecedor" name="codfornecedor" required><br><br>
+        
+        <label for="insumo">Insumo:</label>
+        <input type="text" id="insumo" name="insumo" required><br><br>
+        
+        <label for="quantidade">Quantidade:</label>
+        <input type="text" id="quantidade" name="quantidade" required><br><br>
+        
+        <input type="submit" value="Atualizar Insumo">
+    </form>
+</body>
+</html>

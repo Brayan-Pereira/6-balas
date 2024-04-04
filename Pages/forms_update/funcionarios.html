@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Funcionário</title>
+</head>
+<body>
+    <h2>Atualizar Funcionário</h2>
+    <form action="http://localhost/6-BALAS/DB_php/UPDATE/update_funcionario.php" method="POST">
+        <label for="id">ID do Funcionário:</label>
+        <input type="text" id="id" name="id" required><br><br>
+        
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required><br><br>
+        
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" required><br><br>
+        
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" required><br><br>
+        
+        <label for="municipio">Município:</label>
+        <input type="text" id="municipio" name="municipio" required><br><br>
+        
+        <label for="datanascimento">Data de Nascimento:</label>
+        <input type="date" id="datanascimento" name="datanascimento" required><br><br>
+        
+        <label for="estadocivil">Estado Civil:</label>
+        <input type="text" id="estadocivil" name="estadocivil" required><br><br>
+        
+        <label for="grauinstrucao">Grau de Instrução:</label>
+        <input type="text" id="grauinstrucao" name="grauinstrucao" required><br><br>
+        
+        <label for="identidade">Identidade:</label>
+        <input type="text" id="identidade" name="identidade" required><br><br>
+        
+        <label for="cartdetrabalho">Carteira de Trabalho:</label>
+        <input type="text" id="cartdetrabalho" name="cartdetrabalho" required><br><br>
+        
+        <label for="gender">Gênero:</label>
+        <select id="gender" name="gender" required>
+            <option value="Feminino">Feminino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Outros">Outros</option>
+            <option value="Prefiro não dizer">Prefiro não dizer</option>
+        </select><br><br>
+        
+        <input type="submit" value="Atualizar Funcionário">
+    </form>
+</body>
+</html>

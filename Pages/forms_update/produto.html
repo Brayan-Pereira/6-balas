@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Produto</title>
+</head>
+<body>
+    <h2>Atualizar Produto</h2>
+    <form action="http://localhost/6-BALAS/DB_php/UPDATE/update_produto.php" method="POST">
+        <label for="id">ID do Produto:</label>
+        <input type="text" id="id" name="id" required><br><br>
+        
+        <label for="nomecerveja">Nome da Cerveja:</label>
+        <input type="text" id="nomecerveja" name="nomecerveja" required><br><br>
+        
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" required><br><br>
+        
+        <label for="valor">Valor:</label>
+        <input type="text" id="valor" name="valor" required><br><br>
+        
+        <input type="submit" value="Atualizar Produto">
+    </form>
+</body>
+</html>
