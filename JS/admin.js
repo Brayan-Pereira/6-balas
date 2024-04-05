@@ -12,6 +12,6 @@ function verificacao() {
         window.location.href= 'http://localhost/6-BALAS/Pages/admin/admin.html';
     }else{
         alert('Usuário ou senha incorretos!!!')
-        window.location.href= 'localhost/6-balas/index.html';
+        window.location.href= 'http://localhost/6-BALAS/index.html';
     }
 }

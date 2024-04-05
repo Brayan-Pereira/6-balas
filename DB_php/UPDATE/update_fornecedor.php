@@ -16,20 +16,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $check_fornecedor_sql = "SELECT id FROM fornecedores WHERE id = '$id'";
         $result = $conn->query($check_fornecedor_sql);
 
+        function alert_and_redirect($msg, $url) {
+            echo "<script>alert('$msg');</script>";
+            echo "<script>window.location.href='$url';</script>";
+        }
+
         if ($result->num_rows > 0) {
             $sql = "UPDATE fornecedores SET nomeempresa='$nomeempresa', telefone='$telefone', email='$email', telcontato='$telcontato', endereco='$endereco', emailcontato='$emailcontato', cnpj='$cnpj', identidade='$identidade' WHERE id='$id'";
 
             if ($conn->query($sql) === TRUE) {
-                echo "Dados do fornecedor atualizados com sucesso.";
+                alert_and_redirect( "Dados do fornecedor atualizados com sucesso. Redirecionando em 3 segundos...",  "http://localhost/6-BALAS/Pages/admin/admin.html");
             } else {
-                echo "Erro ao atualizar os dados do fornecedor: " . $conn->error;
+                alert_and_redirect( `Erro ao atualizar os dados do fornecedor: . $conn->error`, "");
             }
         } else {
-            echo "Fornecedor não encontrado.";
+            alert_and_redirect( "Fornecedor não encontrado. Redirecionando em 3 segundos...", "http://localhost/6-BALAS/Pages/forms_update/fornecedores.html" );
         }
-    } else {
-        echo "Todos os campos são obrigatórios.";
     }
+
+   
 }
 
 $conn->close();
