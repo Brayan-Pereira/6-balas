@@ -13,6 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepara e executa a query SQL
     $sql = "INSERT INTO clientes (firstname, lastname, email, number, password, gender) VALUES ('$firstname', '$lastname', '$email', '$number', '$password', '$gender')";
     
+    echo "<script> console.log('$gender');</script>";
+
+
     if ($conn->query($sql) === TRUE) {
         echo "Cliente cadastrado com sucesso.";
     } else {
@@ -21,4 +24,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close(); // Fecha a conexão com o banco de dados
-?>
+
