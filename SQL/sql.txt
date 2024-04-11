@@ -42,10 +42,12 @@ CREATE TABLE funcionarios (
     gender ENUM('Feminino', 'Masculino', 'Outros', 'Prefiro não dizer') NOT NULL
 );
 
+
 CREATE TABLE insumos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     codfornecedor INT,
     insumo VARCHAR(50) NOT NULL,
     quantidade VARCHAR(20) NOT NULL,
+    quant_number INT (5), -- Adiciona o campo quant_number
     FOREIGN KEY (codfornecedor) REFERENCES fornecedores(id)
 );

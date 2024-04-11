@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $codfornecedor = $_POST['codfornecedor'];
     $insumo = $_POST['insumo'];
     $quantidade = $_POST['quantidade'];
+    $quant_number = $_POST['quant_number'];
 
     // Verifica se o código do fornecedor existe na tabela de fornecedores
     $check_fornecedor_sql = "SELECT id FROM fornecedores WHERE id = '$codfornecedor'";
@@ -13,9 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         // Se o código do fornecedor existir, insere o insumo no banco de dados
-        $sql = "INSERT INTO insumos (codfornecedor, insumo, quantidade) VALUES ('$codfornecedor', '$insumo', '$quantidade')";
-
-        if ($conn->query($sql) === TRUE) {
+        $sql_insert = "INSERT INTO insumos (codfornecedor, insumo, quantidade, quant_number) VALUES ('$codfornecedor', '$insumo', '$quantidade', '$quant_number')";
+        
+        if ($conn->query($sql_insert) === TRUE) {
             echo "Insumo cadastrado com sucesso.";
         } else {
             echo "Erro ao cadastrar o insumo: " . $conn->error;
@@ -27,4 +28,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close(); // Fecha a conexão com o banco de dados
-?>
+
