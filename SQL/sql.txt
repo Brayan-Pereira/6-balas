@@ -51,3 +51,35 @@ CREATE TABLE insumos (
     quant_number INT (5), -- Adiciona o campo quant_number
     FOREIGN KEY (codfornecedor) REFERENCES fornecedores(id)
 );
+
+
+
+
+
+-- Alterações:
+
+CREATE TABLE lotes_cerveja (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_produto INT NOT NULL,
+    data_elaboracao DATE NOT NULL,
+    FOREIGN KEY (id_produto) REFERENCES produtos(id)
+);
+
+CREATE TABLE insumos_lote (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_lote INT NOT NULL,
+    id_insumo INT NOT NULL,
+    quantidade_utilizada DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_lote) REFERENCES lotes_cerveja(id),
+    FOREIGN KEY (id_insumo) REFERENCES insumos(id)
+);
+
+
+CREATE TABLE vendas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_produto INT NOT NULL,
+    quantidade INT NOT NULL,
+    valor_unitario DECIMAL(10,2) NOT NULL,
+    data_venda DATE NOT NULL,
+    FOREIGN KEY (id_produto) REFERENCES produtos(id)
+);
