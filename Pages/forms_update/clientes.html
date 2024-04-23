@@ -4,10 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atualizar Cliente</title>
+    <link rel="stylesheet" href="http://localhost/6-BALAS/CSS/global.css">
+    <link rel="stylesheet" href="http://localhost/6-BALAS/CSS/header.css">
+    <link rel="stylesheet" href="http://localhost/6-BALAS/CSS/main.css">
+    <style>
+        body {
+            background-color: #000000; /* Cor de fundo preta */
+            color: #FFFFFF; /* Cor do texto branco */
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remover margem padrão do corpo */
+            padding: 0; /* Remover preenchimento padrão do corpo */
+        }
+        main {
+            display: flex;
+            flex-direction: column; /* Altera a direção do layout para uma coluna */
+            justify-content: center; /* Centralizar verticalmente */
+            align-items: center; /* Centralizar horizontalmente */
+            height: calc(100vh - 50px); /* Altura igual à altura da viewport menos a altura do cabeçalho */
+        }
+        h2 {
+            margin-bottom: 20px; /* Adiciona margem na parte inferior do h2 para separá-lo dos formulários */
+        }
+    </style>
 </head>
 <body>
-    <h2>Atualizar Cliente</h2>
+<header>
+    <nav>
+        <span class="material-symbols-outlined" id="btn_menu">menu</span>
+        <section class="menu_hamburger" id="menu_hamburger">
+            <div class="topo_menu">
+                <img src="http://localhost/6-BALAS/Components/gun.png" alt="">
+                <span class="material-symbols-outlined" id="btnOff_menu">close</span>
+            </div>
+            <ul>
+                <li><a href="////localhost/6-balas/index.html">Tela inicial</a></li>
+                <li><a onclick="verificacao()" href="#">Área do administrador</a></li>
+            </ul>
+        </section>
+        <div class="logo">
+            <img src="http://localhost/6-BALAS/Components/header/logo/logo.png" alt="">
+        </div>
+    </nav>
+</header>
+<main>
     <form action="http://localhost/6-BALAS/DB_php/UPDATE/update_cliente.php" method="POST">
+        <h2>Atualizar Cliente</h2> <!-- Movido para cima dos formulários -->
         <label for="id">ID do Cliente:</label>
         <input type="text" id="id" name="id" required><br><br>
         
@@ -36,5 +77,6 @@
         
         <input type="submit" value="Atualizar Cliente">
     </form>
+</main>
 </body>
 </html>
