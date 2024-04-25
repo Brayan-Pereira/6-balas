@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $number = $_POST['number'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Criptografa a senha
+    $password = $_POST['password'];
     $gender = $_POST['gender'];
 
     // Prepara e executa a query SQL

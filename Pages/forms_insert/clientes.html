@@ -5,10 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Clientes</title>
+    <script>
+        function validarFormulario() {
+            var senha = document.getElementById("password").value;
+            var confirmSenha = document.getElementById("Confirmpassword").value;
+
+            if (senha != confirmSenha) {
+                alert("As senhas não correspondem. Por favor, insira novamente.");
+                return false;
+            }
+            // Se a validação passar, prossegue com a submissão do formulário
+            document.getElementById("myForm").submit();
+        }
+    </script>
 </head>
 
 <body>
-    <form action="http://localhost/6-BALAS/DB_php/INSERT/inserir_cliente.php" method="post">
+    <form id="myForm" action="http://localhost/6-BALAS/DB_php/INSERT/inserir_cliente.php" method="post">
         <div class="form-header">
             <div class="title">
                 <h1>CADASTRE-SE</h1>
@@ -78,7 +91,7 @@
 
 
                 <div class="continue-button">
-                    <button type="submit">Continuar</button>
+                    <button type="button" onclick="validarFormulario()">Continuar</button>
                 </div>
             </div>
         </div>
