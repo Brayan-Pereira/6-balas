@@ -186,7 +186,10 @@ header{
 }
 .preco{
     font-weight: 500;
+}
 
+.id, .tipo{
+    display: none;
 }
 .add-carrinho{
     position: absolute;

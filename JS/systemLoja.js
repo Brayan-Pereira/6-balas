@@ -2,6 +2,11 @@ let carrinhoIcon = document.querySelector('#carrinho');
 let carrinho = document.querySelector('.carrinho-espaco');
 let fecharCarrinho = document.querySelector('#fechar-carrinho');
 
+let valorCompra = 0;
+
+// Inicialize produtosSelecionados como um array vazio
+let produtosSelecionados = [];
+
 carrinhoIcon.onclick = () => {
     carrinho.classList.add("active");
 };
@@ -17,7 +22,6 @@ if (document.readyState == 'loading') {
 
 function ready() {
     var removeCarrinhoButtons = document.getElementsByClassName('remover-carrinho');
-    console.log(removeCarrinhoButtons);
     for (var i = 0; i < removeCarrinhoButtons.length; i++) {
         var button = removeCarrinhoButtons[i];
         button.addEventListener('click', removeCarrinhoItem);
@@ -37,18 +41,27 @@ function ready() {
     document.getElementsByClassName('btn-comprar')[0].addEventListener('click', buyButtonClicked);
 }
 
-function buyButtonClicked(){
-    alert('Seu Pedido foi feito');
-    var carrinhoContent = document.getElementsByClassName('conteudo-carrinho')[0];
-    while (carrinhoContent.hasChildNodes()){
-        carrinhoContent.removeChild(carrinhoContent.firstChild);
+function buyButtonClicked() {
+    if (valorCompra === 0) {
+        alert('Selecione algum produto!')
+    } else {
+        alert('Seu Pedido foi feito');
+        var carrinhoContent = document.getElementsByClassName('conteudo-carrinho')[0];
+        while (carrinhoContent.hasChildNodes()) {
+            carrinhoContent.removeChild(carrinhoContent.firstChild);
+        }
+        console.log(produtosSelecionados)
+        updatetotal();
     }
-    updatetotal();
+
 }
 
 function removeCarrinhoItem(event) {
     var buttonClicked = event.target;
-    buttonClicked.parentElement.remove();
+    var carrinhoItem = buttonClicked.closest('.carrinho-box');
+    var codigoProduto = carrinhoItem.querySelector('.codigo').innerText;
+    removeProdutoSelecionado(codigoProduto);
+    carrinhoItem.remove();
     updatetotal();
 }
 
@@ -58,18 +71,32 @@ function addCarrinhoClicked(event) {
     var title = shopProducts.getElementsByClassName('titulo-produto')[0].innerText;
     var preco = shopProducts.getElementsByClassName('preco')[0].innerText;
     var produtoImg = shopProducts.getElementsByClassName('produto-img')[0].src;
-    addProdutoCarrinho(title, preco, produtoImg);
+    var cod = shopProducts.getElementsByClassName('id')[0].innerText;
+    var tipo = shopProducts.getElementsByClassName('tipo')[0].innerText;
+    // Adiciona os detalhes do produto ao array produtosSelecionados
+    produtosSelecionados.push({ title: title, preco: preco, codigo: cod, tipo: tipo });
+    addProdutoCarrinho(title, preco, produtoImg, cod, tipo);
     updatetotal();
 }
 
-function addProdutoCarrinho(title, preco, produtoImg) {
+function removeProdutoSelecionado(codigo) {
+    var index = produtosSelecionados.findIndex(function(produto) {
+        return produto.codigo === codigo;
+    });
+
+    if (index !== -1) {
+        produtosSelecionados.splice(index, 1);
+    }
+}
+
+function addProdutoCarrinho(title, preco, produtoImg, codigo, tipo) {
     var carrinhoShopBox = document.createElement("div");
     carrinhoShopBox.classList.add("carrinho-box");
     var cartItems = document.getElementsByClassName("conteudo-carrinho")[0];
     var cartItemsNames = cartItems.getElementsByClassName("titulo-carrinho-produto");
     for (var i = 0; i < cartItemsNames.length; i++) {
         if (cartItemsNames[i].innerText == title) {
-            alert("Voce ja adicionou este item ao carrinho");
+            alert("Você já adicionou este item ao carrinho");
             return;
         }
     }
@@ -80,6 +107,8 @@ function addProdutoCarrinho(title, preco, produtoImg) {
             <div class="preco-carrinho">${preco}</div>
             <input type="number" value="1" class="quantidade-carrinho">
         </div>
+        <span class="hidden codigo">${codigo}</span>
+        <span class="hidden tipo">${tipo}</span>
         <i class='bx bxs-trash-alt remover-carrinho'></i>`;
     carrinhoShopBox.innerHTML = carrinhoBoxContent;
     cartItems.append(carrinhoShopBox);
@@ -107,8 +136,8 @@ function updatetotal() {
         var quantity = quantityElement.value;
         total = total + (price * quantity);
     }
-        total = Math.round(total * 100) / 100;
+    total = Math.round(total * 100) / 100;
+    valorCompra = total;
 
-        document.getElementsByClassName('preco-total')[0].innerText = 'R$' + total;
-    
+    document.getElementsByClassName('preco-total')[0].innerText = 'R$' + total;
 }

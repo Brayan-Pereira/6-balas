@@ -83,3 +83,9 @@ CREATE TABLE vendas (
     data_venda DATE NOT NULL,
     FOREIGN KEY (id_produto) REFERENCES produtos(id)
 );
+
+
+--adicionar a tabela de vendas
+ALTER TABLE vendas
+ADD COLUMN id_cliente INT NOT NULL,
+ADD FOREIGN KEY (id_cliente) REFERENCES clientes(id);

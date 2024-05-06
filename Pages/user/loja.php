@@ -49,7 +49,7 @@
             }
 
             // Consulta SQL para obter os produtos
-            $sql = "SELECT nomecerveja, tipo, valor FROM produtos";
+            $sql = "SELECT * FROM produtos";
             $result = $conn->query($sql);
 
             // Exibir os produtos
@@ -60,6 +60,9 @@
                     $imagem = gerarNumeroAleatorioEArray();
                     echo "<img src='$imagem' alt='' class='produto-img'>";
                     echo "<h2 class='titulo-produto'>" . $row['nomecerveja'] . "</h2>";
+                    // Adicionando o ID e o tipo do produto como spans
+                    echo "<span class='id'>ID: " . $row['id'] . "</span>";
+                    echo "<span class='tipo'>Tipo: " . $row['tipo'] . "</span>";
                     echo "<span class='preco'>R$" . number_format($row['valor'], 2, ',', '.') . "</span>";
                     echo "<i class='bx bxs-shopping-bag add-carrinho'></i>";
                     echo "</div>";
