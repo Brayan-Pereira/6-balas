@@ -40,21 +40,47 @@ function ready() {
 
     document.getElementsByClassName('btn-comprar')[0].addEventListener('click', buyButtonClicked);
 }
-
 function buyButtonClicked() {
     if (valorCompra === 0) {
-        alert('Selecione algum produto!')
+        alert('Selecione algum produto!');
     } else {
-        alert('Seu Pedido foi feito');
-        var carrinhoContent = document.getElementsByClassName('conteudo-carrinho')[0];
-        while (carrinhoContent.hasChildNodes()) {
-            carrinhoContent.removeChild(carrinhoContent.firstChild);
-        }
-        console.log(produtosSelecionados)
-        updatetotal();
-    }
+        // Converter produtosSelecionados para JSON
+        var produtosSelecionadosJSON = JSON.stringify(produtosSelecionados);
+        
+        // Enviar os dados do produto para o PHP
+        fetch('http://localhost/6-BALAS/DB_php/INSERT/processar_venda.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: produtosSelecionadosJSON // Passar a variável produtosSelecionadosJSON como corpo da requisição
+        })
+        .then(response => {
+            if (response.ok) {
 
+                console.log(produtosSelecionados, produtosSelecionadosJSON)
+                // Limpar o conteúdo do carrinho
+                var carrinhoContent = document.getElementsByClassName('conteudo-carrinho')[0];
+                while (carrinhoContent.hasChildNodes()) {
+                    carrinhoContent.removeChild(carrinhoContent.firstChild);
+                }
+                // Limpar o array de produtos selecionados
+                produtosSelecionados = [];
+                // Atualizar o total
+                updatetotal();
+                alert('Seu pedido foi feito.');
+            } else {
+                alert('Ocorreu um erro ao processar o pedido.');
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Ocorreu um erro ao processar o pedido.');
+        });
+    }
 }
+
+
 
 function removeCarrinhoItem(event) {
     var buttonClicked = event.target;
@@ -103,17 +129,19 @@ function addProdutoCarrinho(title, preco, produtoImg, codigo, tipo) {
     var carrinhoBoxContent = `
         <img src="${produtoImg}" alt="" class="carrinho-imagem">
         <div class="detail-box">
-            <div class="titulo-carrinho-produto">${title}</div>
-            <div class="preco-carrinho">${preco}</div>
+            <div class="titulo-carrinho-produto" id="Title" name="Title">${title}</div>
+            <div class="preco-carrinho" id="preco" name="preco">${preco}</div>
             <input type="number" value="1" class="quantidade-carrinho">
+            <span class="hidden codigo" id="codigo" name="codigo" >${codigo}</span>
         </div>
-        <span class="hidden codigo">${codigo}</span>
-        <span class="hidden tipo">${tipo}</span>
+       
+        <span class="hidden tipo" id="tipo" name="tipo">${tipo}</span>
         <i class='bx bxs-trash-alt remover-carrinho'></i>`;
     carrinhoShopBox.innerHTML = carrinhoBoxContent;
     cartItems.append(carrinhoShopBox);
     carrinhoShopBox.getElementsByClassName("remover-carrinho")[0].addEventListener("click", removeCarrinhoItem);
     carrinhoShopBox.getElementsByClassName("quantidade-carrinho")[0].addEventListener("change", quantityChanged);
+
 }
 
 function quantityChanged(event) {

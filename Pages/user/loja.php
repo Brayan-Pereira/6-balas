@@ -15,6 +15,7 @@
             <a href="#" class="logo">Carrinho</a>
             <i class='bx bx-cart' id="carrinho"></i>
             <div class="carrinho-espaco">
+
                 <h2 class="titulo-carrinho">Seu Carrinho</h2>
                 <div class="conteudo-carrinho"></div>
                 <div class="total">
@@ -23,6 +24,7 @@
                 </div>
                 <button type="button" class="btn-comprar">Comprar Agora</button>
                 <i class='bx bx-x' id="fechar-carrinho"></i>
+
             </div>
         </div>
     </header>
@@ -31,9 +33,10 @@
         <div class="conteudo-loja">
             <?php
             include './config.php';
-            
+
             // Função para gerar número aleatório e selecionar imagem
-            function gerarNumeroAleatorioEArray() {
+            function gerarNumeroAleatorioEArray()
+            {
                 // Gerar um número aleatório de 0 a 2
                 $numeroAleatorio = rand(0, 2);
 
@@ -54,7 +57,7 @@
 
             // Exibir os produtos
             if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
+                while ($row = $result->fetch_assoc()) {
                     echo "<div class='product-box'>";
                     // Chamando a função para selecionar a imagem aleatória
                     $imagem = gerarNumeroAleatorioEArray();
