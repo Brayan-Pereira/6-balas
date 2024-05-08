@@ -22,7 +22,12 @@
                     <div class="titulo-total">Total</div>
                     <div class="preco-total">R$0</div>
                 </div>
-                <button type="button" class="btn-comprar">Comprar Agora</button>
+
+                <form action="http://localhost/6-BALAS/DB_php/INSERT/processar_venda.php" method="post">
+                    <input type="text" name="input_hidden" id="input_hidden">
+                    <button type="submit" class="btn-comprar">Comprar Agora</button>
+
+                </form>
                 <i class='bx bx-x' id="fechar-carrinho"></i>
 
             </div>

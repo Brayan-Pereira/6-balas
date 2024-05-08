@@ -45,38 +45,13 @@ function buyButtonClicked() {
         alert('Selecione algum produto!');
     } else {
         // Converter produtosSelecionados para JSON
-        var produtosSelecionadosJSON = JSON.stringify(produtosSelecionados);
-        
-        // Enviar os dados do produto para o PHP
-        fetch('http://localhost/6-BALAS/DB_php/INSERT/processar_venda.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: produtosSelecionadosJSON // Passar a variável produtosSelecionadosJSON como corpo da requisição
-        })
-        .then(response => {
-            if (response.ok) {
+        console.log(produtosSelecionados, JSON.stringify(produtosSelecionados))
 
-                console.log(produtosSelecionados, produtosSelecionadosJSON)
-                // Limpar o conteúdo do carrinho
-                var carrinhoContent = document.getElementsByClassName('conteudo-carrinho')[0];
-                while (carrinhoContent.hasChildNodes()) {
-                    carrinhoContent.removeChild(carrinhoContent.firstChild);
-                }
-                // Limpar o array de produtos selecionados
-                produtosSelecionados = [];
-                // Atualizar o total
-                updatetotal();
-                alert('Seu pedido foi feito.');
-            } else {
-                alert('Ocorreu um erro ao processar o pedido.');
-            }
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-            alert('Ocorreu um erro ao processar o pedido.');
-        });
+        var inputHidden = document.getElementById("input_hidden")
+        
+        var jsonProdutos =  JSON.stringify(produtosSelecionados)
+
+        inputHidden.value = jsonProdutos
     }
 }
 
@@ -97,11 +72,11 @@ function addCarrinhoClicked(event) {
     var title = shopProducts.getElementsByClassName('titulo-produto')[0].innerText;
     var preco = shopProducts.getElementsByClassName('preco')[0].innerText;
     var produtoImg = shopProducts.getElementsByClassName('produto-img')[0].src;
-    var cod = shopProducts.getElementsByClassName('id')[0].innerText;
+    var codigo = shopProducts.getElementsByClassName('id')[0].innerText;
     var tipo = shopProducts.getElementsByClassName('tipo')[0].innerText;
     // Adiciona os detalhes do produto ao array produtosSelecionados
-    produtosSelecionados.push({ title: title, preco: preco, codigo: cod, tipo: tipo });
-    addProdutoCarrinho(title, preco, produtoImg, cod, tipo);
+    produtosSelecionados.push({ title: title, preco: preco, codigo: codigo, tipo: tipo });
+    addProdutoCarrinho(title, preco, produtoImg, codigo, tipo);
     updatetotal();
 }
 

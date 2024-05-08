@@ -1,40 +1,52 @@
 <?php
-// Inclua o arquivo de configuração do banco de dados
+// Inclui o arquivo de configuração do banco de dados
 include '../config.php';
 
-// Receba os dados do produto da requisição POST
-$data = json_decode(file_get_contents('php://input'), true);
+if (isset($_POST['input_hidden'])) {
+    $stmt = $conn->prepare("INSERT INTO vendas (id_produto, quantidade, valor_unitario, data_venda) VALUES (?, ?, ?, ?)");
 
-// Verifique se os dados foram recebidos corretamente
-if (!empty($data)) {
-    // Inserir a venda na tabela de vendas
-    foreach ($data as $produto) {
-        $id_produto = $produto['codigo'];
-        $quantidade = 1; // Assumindo uma quantidade padrão de 1 para cada produto
-        $valor_unitario = $produto['preco'];
-        $data_venda = date('Y-m-d'); // Data atual
+    // Verifica se a consulta está preparada corretamente
+    if (!$stmt) {
+        echo "Erro na preparação da consulta: (" . $conn->errno . ") " . $conn->error;
+    }
 
-        // Consulta SQL para inserir a venda na tabela de vendas
-        $sql = "INSERT INTO vendas (id_produto, quantidade, valor_unitario, data_venda) 
-                VALUES ('$id_produto', '$quantidade', '$valor_unitario', '$data_venda')";
+    $jsonProdutos = $_POST['input_hidden'];
+    $produtos = json_decode($jsonProdutos);
 
-        // Executar a consulta
-        if ($conn->query($sql) !== TRUE) {
-            // Se ocorrer um erro, envie um código de erro HTTP
-            http_response_code(500);
-            echo "Erro ao registrar venda: " . $conn->error;
-            exit(); // Sair do script em caso de erro
+    // Obtém a data atual
+    $data_venda = date("Y-m-d");
+    $script = "<script>";
+    // Itera sobre os produtos e registra as vendas no banco de dados
+    foreach ($produtos as $produto) {
+        $id_produto = (int)$produto->codigo; // Converte para número inteiro
+        $script .= "console.log('Código: " . htmlspecialchars($produto->codigo) . "');";
+        $quantidade = 1;
+        $valor_unitario = $produto->preco;
+        // Supõe-se que id_cliente vem de algum formulário ou fonte de dados
+
+        // Verifica se o id_produto existe na tabela produtos
+        $check_stmt = $conn->prepare("SELECT id FROM produtos WHERE id = '$id_produto'");
+        $check_stmt->execute();
+        $check_result = $check_stmt->get_result();
+
+        // Se o id_produto existe, proceda com a inserção na tabela vendas
+        if ($check_result->num_rows > 0) {
+            // Associa os parâmetros à consulta preparada e executa a inserção
+            $stmt->bind_param("iids", $id_produto, $quantidade, $valor_unitario, $data_venda);
+            $stmt->execute();
+        } else {
+            echo "Produto com id $id_produto não encontrado na tabela produtos. Venda não registrada.";
         }
     }
-    // Envie uma resposta de sucesso
-    http_response_code(200);
-    echo "Venda registrada com sucesso.";
+
+    // Fecha a conexão e a declaração
+    $stmt->close();
+    $check_stmt->close();
+    $conn->close();
+
+    echo "Vendas registradas com sucesso!";
 } else {
-    // Se não houver dados recebidos, envie um código de erro HTTP
-    http_response_code(400);
-    echo "Nenhum dado recebido.";
+    echo "Campo input_hidden não encontrado";
 }
 
-// Fechar a conexão com o banco de dados
-$conn->close();
-
+?>
