@@ -11,17 +11,20 @@ if (isset($_POST['input_hidden'])) {
     }
 
     $jsonProdutos = $_POST['input_hidden'];
+   
     $produtos = json_decode($jsonProdutos);
 
     // Obtém a data atual
     $data_venda = date("Y-m-d");
-    $script = "<script>";
+    
     // Itera sobre os produtos e registra as vendas no banco de dados
     foreach ($produtos as $produto) {
         $id_produto = (int)$produto->codigo; // Converte para número inteiro
-        $script .= "console.log('Código: " . htmlspecialchars($produto->codigo) . "');";
-        $quantidade = 1;
         $valor_unitario = $produto->preco;
+        echo "<script>console.log('$id_produto');</script>";
+        $quantidade = 1;
+        
+        
         // Supõe-se que id_cliente vem de algum formulário ou fonte de dados
 
         // Verifica se o id_produto existe na tabela produtos
@@ -49,4 +52,3 @@ if (isset($_POST['input_hidden'])) {
     echo "Campo input_hidden não encontrado";
 }
 
-?>

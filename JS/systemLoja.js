@@ -4,6 +4,8 @@ let fecharCarrinho = document.querySelector('#fechar-carrinho');
 
 let valorCompra = 0;
 
+let contadorProdutosCarrinho = 0;
+
 // Inicialize produtosSelecionados como um array vazio
 let produtosSelecionados = [];
 
@@ -19,6 +21,8 @@ if (document.readyState == 'loading') {
 } else {
     ready();
 }
+
+
 
 function ready() {
     var removeCarrinhoButtons = document.getElementsByClassName('remover-carrinho');
@@ -75,8 +79,9 @@ function addCarrinhoClicked(event) {
     var codigo = shopProducts.getElementsByClassName('id')[0].innerText;
     var tipo = shopProducts.getElementsByClassName('tipo')[0].innerText;
     // Adiciona os detalhes do produto ao array produtosSelecionados
-    produtosSelecionados.push({ title: title, preco: preco, codigo: codigo, tipo: tipo });
+    
     addProdutoCarrinho(title, preco, produtoImg, codigo, tipo);
+    console.log("preco:" + preco)
     updatetotal();
 }
 
@@ -105,9 +110,9 @@ function addProdutoCarrinho(title, preco, produtoImg, codigo, tipo) {
         <img src="${produtoImg}" alt="" class="carrinho-imagem">
         <div class="detail-box">
             <div class="titulo-carrinho-produto" id="Title" name="Title">${title}</div>
-            <div class="preco-carrinho" id="preco" name="preco">${preco}</div>
-            <input type="number" value="1" class="quantidade-carrinho">
-            <span class="hidden codigo" id="codigo" name="codigo" >${codigo}</span>
+            <div class="preco-carrinho" id="preco" name="preco">R$${preco}</div>
+            <input type="number" id="qtd" name="qtd" value="1" class="quantidade-carrinho">
+            <span class="hidden codigo" id="codigo" name="codigo" >ID: ${codigo}</span>
         </div>
        
         <span class="hidden tipo" id="tipo" name="tipo">${tipo}</span>
@@ -117,6 +122,35 @@ function addProdutoCarrinho(title, preco, produtoImg, codigo, tipo) {
     carrinhoShopBox.getElementsByClassName("remover-carrinho")[0].addEventListener("click", removeCarrinhoItem);
     carrinhoShopBox.getElementsByClassName("quantidade-carrinho")[0].addEventListener("change", quantityChanged);
 
+    
+
+    produtosSelecionados.push({ title: title, preco: preco, codigo: codigo, tipo: tipo, count: contadorProdutosCarrinho})
+    contadorProdutosCarrinho =+ 1;
+
+    atualizaQuantidade(produtosSelecionados)
+}
+
+function atualizaQuantidade(produtos) {
+
+    for (let i = 0; i < produtos.length; i++) {
+        console.log(produtos[i].quant)
+
+        if (produtos[i].quant === undefined) {
+            var inputQtd = document.getElementById("qtd").value;
+
+            produtos[0].quant = inputQtd;
+
+            console.log(`Produto ${i}, tem quantidade: ${ produtos[0].quant}`)
+        }
+        
+    }
+
+   
+}
+
+function inputQuant() {
+   
+    return inputQtd.value;
 }
 
 function quantityChanged(event) {

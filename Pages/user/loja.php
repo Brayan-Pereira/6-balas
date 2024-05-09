@@ -23,10 +23,9 @@
                     <div class="preco-total">R$0</div>
                 </div>
 
-                <form action="http://localhost/6-BALAS/DB_php/INSERT/processar_venda.php" method="post">
-                    <input type="text" name="input_hidden" id="input_hidden">
-                    <button type="submit" class="btn-comprar">Comprar Agora</button>
-
+                <form id="myForm" action="http://localhost/6-BALAS/DB_php/INSERT/processar_venda.php" method="post">
+                    <input type="text" name="input_hidden" id="input_hidden" required>
+                    <button type="button" class="btn-comprar" onclick="executarAntesDeEnviar()">Comprar Agora</button>
                 </form>
                 <i class='bx bx-x' id="fechar-carrinho"></i>
 
@@ -69,9 +68,9 @@
                     echo "<img src='$imagem' alt='' class='produto-img'>";
                     echo "<h2 class='titulo-produto'>" . $row['nomecerveja'] . "</h2>";
                     // Adicionando o ID e o tipo do produto como spans
-                    echo "<span class='id'>ID: " . $row['id'] . "</span>";
+                    echo "<span class='id'>" . $row['id'] . "</span>";
                     echo "<span class='tipo'>Tipo: " . $row['tipo'] . "</span>";
-                    echo "<span class='preco'>R$" . number_format($row['valor'], 2, ',', '.') . "</span>";
+                    echo "<span class='preco'>" . number_format($row['valor'], 2, ',', '.') . "</span>";
                     echo "<i class='bx bxs-shopping-bag add-carrinho'></i>";
                     echo "</div>";
                 }
