@@ -152,7 +152,7 @@ function atualizaQuantidadeTodos(produtos) {
 
 function verificarCorrespondenciaValor(valorInput) {
     // Verifique se o valor do input bate com o valor presente no objeto dentro do array
-    var objetoProduto = produtosSelecionados.find(function(produto) {
+    var objetoProduto = produtosSelecionados.find(function (produto) {
         return produto.count === valorInput;
     });
 
@@ -167,14 +167,14 @@ function verificarCorrespondenciaValor(valorInput) {
 }
 
 function executarAntesDeEnviar() {
-    var count = parseInt(document.getElementById("countProd").innerText, 10);
+        var count = parseInt(document.getElementById("countProd").innerText, 10);
 
-    console.log('Valor do count:', count);
+        console.log('Valor do count:', count);
 
-    // Verifique se o valor do input bate com algum valor presente no objeto dentro do array
-    verificarCorrespondenciaValor(count);
+        // Verifique se o valor do input bate com algum valor presente no objeto dentro do array
+        verificarCorrespondenciaValor(count);
 
-    document.getElementById("myForm").submit();
+        document.getElementById("myForm").submit();
 }
 
 function inputQuant() {

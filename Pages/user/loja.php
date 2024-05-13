@@ -10,6 +10,8 @@
 </head>
 
 <body>
+
+<script src="http://localhost/6-BALAS/JS/systemLoja.js" defer></script>
     <header>
         <div class="nav container">
             <a href="#" class="logo">Carrinho</a>
@@ -81,7 +83,7 @@
             ?>
         </div>
     </section>
-    <script src="http://localhost/6-BALAS/JS/systemLoja.js"></script>
+   
 </body>
 
 </html>
