@@ -89,3 +89,8 @@ CREATE TABLE vendas (
 ALTER TABLE vendas
 ADD COLUMN id_cliente INT NOT NULL,
 ADD FOREIGN KEY (id_cliente) REFERENCES clientes(id);
+
+--deletar o fk de cliente para teste
+ALTER TABLE vendas
+DROP FOREIGN KEY vendas_ibfk_2,
+DROP COLUMN id_cliente;
