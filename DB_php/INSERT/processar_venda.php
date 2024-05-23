@@ -51,4 +51,3 @@ if (isset($_POST['input_hidden'])) {
 } else {
     echo "Campo input_hidden não encontrado";
 }
-
