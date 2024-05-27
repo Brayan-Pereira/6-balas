@@ -46,15 +46,6 @@ function ready() {
 function buyButtonClicked() {
     if (valorCompra === 0) {
         alert('Selecione algum produto!');
-    } else {
-        // Converter produtosSelecionados para JSON
-        console.log(produtosSelecionados, JSON.stringify(produtosSelecionados))
-
-        var inputHidden = document.getElementById("input_hidden")
-
-        var jsonProdutos = JSON.stringify(produtosSelecionados)
-
-        inputHidden.value = jsonProdutos
     }
 }
 
@@ -147,6 +138,8 @@ function atualizaQuantidadeTodos(produtos) {
         produtos[i].quant = quant;
 
         console.log(`A quantidade do produto ${produtos[i].title} foi atualizada para ${quant}`);
+
+        
     }
 }
 
@@ -174,7 +167,20 @@ function executarAntesDeEnviar() {
         // Verifique se o valor do input bate com algum valor presente no objeto dentro do array
         verificarCorrespondenciaValor(count);
 
-        document.getElementById("myForm").submit();
+        console.log(produtosSelecionados, JSON.stringify(produtosSelecionados))
+
+        var inputHidden = document.getElementById("input_hidden")
+
+        var jsonProdutos = JSON.stringify(produtosSelecionados)
+
+        inputHidden.value = jsonProdutos
+
+        
+        const opcao = prompt("Digite 'sim' para confirmar")
+        if(opcao === "sim"){
+            document.getElementById("myForm").submit();
+        }
+       
 }
 
 function inputQuant() {

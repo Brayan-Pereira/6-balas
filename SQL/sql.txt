@@ -94,3 +94,8 @@ ADD FOREIGN KEY (id_cliente) REFERENCES clientes(id);
 ALTER TABLE vendas
 DROP FOREIGN KEY vendas_ibfk_2,
 DROP COLUMN id_cliente;
+
+
+
+ALTER TABLE vendas 
+ADD COLUMN codigo_venda INT NOT NULL;
