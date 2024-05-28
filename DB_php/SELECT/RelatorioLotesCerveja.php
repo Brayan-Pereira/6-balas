@@ -137,7 +137,7 @@
                             $dataElaboracao = $row['data_elaboracao'];
                         }
                         if (!is_null($row['insumo'])) {
-                            $insumos[] = $row['insumo'] . " - " . $row['quantidade_utilizada'] . " kg";
+                            $insumos[] = $row['insumo'] . " - " . $row['quantidade_utilizada'] ." kg/ Litro";
                         }
                     }
                     // Exibir a última linha da tabela
