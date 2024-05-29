@@ -3,11 +3,11 @@ let carrinho = document.querySelector('.carrinho-espaco');
 let fecharCarrinho = document.querySelector('#fechar-carrinho');
 
 let valorCompra = 0;
-
 let contadorProdutosCarrinho = 0;
-
-// Inicialize produtosSelecionados como um array vazio
 let produtosSelecionados = [];
+
+let usuario = JSON.parse(localStorage.getItem('usuario'));
+
 
 carrinhoIcon.onclick = () => {
     carrinho.classList.add("active");
@@ -16,7 +16,7 @@ fecharCarrinho.onclick = () => {
     carrinho.classList.remove("active");
 };
 
-if (document.readyState == 'loading') {
+if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 } else {
     ready();
@@ -33,26 +33,26 @@ function ready() {
         var input = quantityInputs[i];
         input.addEventListener("change", quantityChanged);
     }
-
     var addCarrinho = document.getElementsByClassName('add-carrinho');
     for (var i = 0; i < addCarrinho.length; i++) {
         var button = addCarrinho[i];
         button.addEventListener("click", addCarrinhoClicked);
     }
-
     document.getElementsByClassName('btn-comprar')[0].addEventListener('click', buyButtonClicked);
 }
 
 function buyButtonClicked() {
     if (valorCompra === 0) {
         alert('Selecione algum produto!');
+    } else {
+        executarAntesDeEnviar();
     }
 }
 
 function removeCarrinhoItem(event) {
     var buttonClicked = event.target;
     var carrinhoItem = buttonClicked.closest('.carrinho-box');
-    var codigoProduto = carrinhoItem.querySelector('.codigo').innerText;
+    var codigoProduto = carrinhoItem.querySelector('.codigo').innerText.replace('ID: ', '');
     removeProdutoSelecionado(codigoProduto);
     carrinhoItem.remove();
     updatetotal();
@@ -62,22 +62,25 @@ function addCarrinhoClicked(event) {
     var button = event.target;
     var shopProducts = button.parentElement;
     var title = shopProducts.getElementsByClassName('titulo-produto')[0].innerText;
-    var preco = shopProducts.getElementsByClassName('preco')[0].innerText;
+    var preco = shopProducts.getElementsByClassName('preco')[0].innerText.replace('R$', '');
     var produtoImg = shopProducts.getElementsByClassName('produto-img')[0].src;
     var codigo = shopProducts.getElementsByClassName('id')[0].innerText;
     var tipo = shopProducts.getElementsByClassName('tipo')[0].innerText;
-    // Adiciona os detalhes do produto ao array produtosSelecionados
 
     addProdutoCarrinho(title, preco, produtoImg, codigo, tipo);
-    console.log("preco:" + preco)
     updatetotal();
+
+    if (usuario) {
+        console.log("Usuario: " + usuario.nome);
+        console.log("IDUsuario: " + usuario.idUser);
+    }
+    
 }
 
 function removeProdutoSelecionado(codigo) {
     var index = produtosSelecionados.findIndex(function (produto) {
         return produto.codigo === codigo;
     });
-
     if (index !== -1) {
         produtosSelecionados.splice(index, 1);
     }
@@ -94,18 +97,17 @@ function addProdutoCarrinho(title, preco, produtoImg, codigo, tipo) {
             return;
         }
     }
-
     contadorProdutosCarrinho++;
     var carrinhoBoxContent = `
         <img src="${produtoImg}" alt="" class="carrinho-imagem">
         <div class="detail-box">
-            <div class="titulo-carrinho-produto" id="Title" name="Title">${title}</div>
-            <div class="preco-carrinho" id="preco" name="preco">R$${preco}</div>
-            <input type="number" id="qtd_${contadorProdutosCarrinho}" name="qtd" value="1" class="quantidade-carrinho">
-            <span class="hidden codigo" id="codigo" name="codigo" style="display: none">ID: ${codigo}</span>
-            <span class="countProd" id="countProd" name="countProd" style="display: none">${contadorProdutosCarrinho}</span>
+            <div class="titulo-carrinho-produto">${title}</div>
+            <div class="preco-carrinho">R$${preco}</div>
+            <input type="number" value="1" class="quantidade-carrinho" id="qtd_${contadorProdutosCarrinho}">
+            <span class="hidden codigo" style="display: none">ID: ${codigo}</span>
+            <span class="countProd" style="display: none">${contadorProdutosCarrinho}</span>
         </div>
-        <span class="hidden tipo" id="tipo" name="tipo">${tipo}</span>
+        <span class="hidden tipo" style="display: none">${tipo}</span>
         <i class='bx bxs-trash-alt remover-carrinho'></i>`;
     carrinhoShopBox.innerHTML = carrinhoBoxContent;
     cartItems.append(carrinhoShopBox);
@@ -113,78 +115,45 @@ function addProdutoCarrinho(title, preco, produtoImg, codigo, tipo) {
     carrinhoShopBox.getElementsByClassName("remover-carrinho")[0].addEventListener("click", removeCarrinhoItem);
     carrinhoShopBox.getElementsByClassName("quantidade-carrinho")[0].addEventListener("change", quantityChanged);
 
-    produto = {
+    produtosSelecionados.push({
         title: title,
         preco: preco,
         codigo: codigo,
         tipo: tipo,
-        count: contadorProdutosCarrinho
-    };
-    produtosSelecionados.push(produto);
+        count: contadorProdutosCarrinho,
+        quant: 1
+    });
 }
 
-function atualizaQuantidadeTodos(produtos) {
-    // Percorre todos os produtos selecionados
-    for (let i = 0; i < produtos.length; i++) {
-        // Obtém o ID do input de quantidade para este produto
-        let valorCount = produtos[i].count;
+function atualizaQuantidadeTodos() {
+    for (let i = 0; i < produtosSelecionados.length; i++) {
+        let valorCount = produtosSelecionados[i].count;
         let inputId = `qtd_${valorCount}`;
-
-        // Obtém o valor do input de quantidade
         let inputQuantidade = document.getElementById(inputId);
         let quant = parseInt(inputQuantidade.value, 10);
-
-        // Atualiza a quantidade do produto com o valor do input
-        produtos[i].quant = quant;
-
-        console.log(`A quantidade do produto ${produtos[i].title} foi atualizada para ${quant}`);
-
-        
+        produtosSelecionados[i].quant = quant;
     }
 }
 
 function verificarCorrespondenciaValor(valorInput) {
-    // Verifique se o valor do input bate com o valor presente no objeto dentro do array
     var objetoProduto = produtosSelecionados.find(function (produto) {
         return produto.count === valorInput;
     });
-
     if (objetoProduto) {
-        console.log("O valor convertido do input bate com o valor presente no objeto:", objetoProduto);
-
-        // Chama a função para atualizar a quantidade de todos os produtos
-        atualizaQuantidadeTodos(produtosSelecionados);
-    } else {
-        console.log("O valor convertido do input não bate com nenhum valor presente no objeto.");
+        atualizaQuantidadeTodos();
     }
 }
 
 function executarAntesDeEnviar() {
-        var count = parseInt(document.getElementById("countProd").innerText, 10);
-
-        console.log('Valor do count:', count);
-
-        // Verifique se o valor do input bate com algum valor presente no objeto dentro do array
-        verificarCorrespondenciaValor(count);
-
-        console.log(produtosSelecionados, JSON.stringify(produtosSelecionados))
-
-        var inputHidden = document.getElementById("input_hidden")
-
-        var jsonProdutos = JSON.stringify(produtosSelecionados)
-
-        inputHidden.value = jsonProdutos
-
-        
-        const opcao = prompt("Digite 'sim' para confirmar")
-        if(opcao === "sim"){
-            document.getElementById("myForm").submit();
-        }
-       
-}
-
-function inputQuant() {
-    return inputQtd.value;
+    var count = parseInt(document.querySelector(".countProd").innerText, 10);
+    verificarCorrespondenciaValor(count);
+    var inputHidden = document.getElementById("input_hidden");
+    var jsonProdutos = JSON.stringify(produtosSelecionados);
+    inputHidden.value = jsonProdutos;
+    const opcao = prompt("Digite 'sim' para confirmar");
+    if (opcao === "sim") {
+        document.getElementById("myForm").submit();
+    }
 }
 
 function quantityChanged(event) {
@@ -209,6 +178,5 @@ function updatetotal() {
     }
     total = Math.round(total * 100) / 100;
     valorCompra = total;
-
     document.getElementsByClassName('preco-total')[0].innerText = 'R$' + total;
 }

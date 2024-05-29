@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="dark">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,28 +20,35 @@
 </head>
 
 <body class="d-flex justify-content-center">
-<?php
-include './config.php';
-    // Verificar se os campos de email e senha foram submetidos
+    <?php
+    include './config.php';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
-
-        // Consulta SQL para verificar se o email e a senha correspondem a um registro na tabela clientes
-        $sql = "SELECT id, firstname, lastname FROM clientes WHERE email = '$email' AND password = '$senha'";
-        $result = $conn->query($sql);
-
-        // Verificar se a consulta retornou algum resultado
+        $stmt = $conn->prepare("SELECT id, firstname, lastname, email FROM clientes WHERE email = ? AND password = ?");
+        $stmt->bind_param("ss", $email, $senha);
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($result->num_rows > 0) {
-            // Se houver um registro correspondente, redirecione para a página desejada
-            header("Location: http://localhost/6-balas/Pages/user/loja.php");
+            $row = $result->fetch_assoc();
+            $nome = $row['firstname'] . ' ' . $row['lastname'];
+            $email = $row['email'];
+            $id = $row['id'];
+            echo "<script>
+            var usuario = {
+                email: '$email',
+                nome: '$nome',
+                idUser: '$id'
+            };
+            localStorage.setItem('usuario', JSON.stringify(usuario));
+            window.location.href = 'http://localhost/6-balas/Pages/user/loja.php';
+        </script>";
             exit();
         } else {
-            // Se não houver um registro correspondente, exiba um alerta e redirecione de volta para a página de login
             echo "<script>alert('Email ou senha incorretos');</script>";
         }
+        $stmt->close();
     }
-
     $conn->close();
     ?>
 
@@ -53,7 +59,6 @@ include './config.php';
             <span class="material-symbols-outlined" id="btn_menu">
                 menu
             </span>
-
             <section class="menu_hamburger" id="menu_hamburger">
                 <div class="topo_menu">
                     <img src="http://localhost/6-BALAS/Components/gun.png" alt="">
@@ -61,16 +66,13 @@ include './config.php';
                         close
                     </span>
                 </div>
-
                 <ul>
-                    <li><a href="////localhost/6-balas/index.html">Tela inicial</a></li>
+                    <li><a href="http://localhost/6-balas/index.html">Tela inicial</a></li>
                     <li><a onclick="verificacao()" href="#">Área do administrador</a></li>
                 </ul>
             </section>
         </nav>
-
         <h1>Venha beber com a gente!</h1>
-
         <div class="logo">
             <img src="http://localhost/6-BALAS/Components/header/logo/logo.png" alt="">
         </div>
@@ -80,11 +82,13 @@ include './config.php';
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <h1 class="h3 mb-5 fw-normal">Login</h1>
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="seu-email@gmail.com" required />
+                    <input type="email" class="form-control" id="email" name="email" placeholder="seu-email@gmail.com"
+                        required />
                     <label for="email">E-mail</label>
                 </div>
                 <div class="form-floating pt-2">
-                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Sua senha" required />
+                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Sua senha"
+                        required />
                     <label for="senha">Senha</label>
                 </div>
                 <div class="form-check text-start my-3">
