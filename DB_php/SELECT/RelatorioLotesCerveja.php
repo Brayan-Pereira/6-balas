@@ -60,7 +60,8 @@
     </style>
 </head>
 <body>
-<header>
+<script src="http://localhost/6-balas/JS/menu.js" defer></script>
+    <header>
         <nav>
             <span class="material-symbols-outlined" id="btn_menu">
                 menu
@@ -75,8 +76,8 @@
                 </div>
     
                 <ul>
-                    <li><a href="localhost/6-balas/index.html">Tela inicial</a></li>
-                    <li><a onclick="verificacao()" href="#">Área do administrador</a></li>
+                    <li><a href="////localhost/6-balas/index.html">Tela inicial</a></li>
+                    <li><a onclick="verificacao()" href="////localhost/6-balas/Pages/admin/admin.html">Área do administrador</a></li>
                 </ul>
             </section>
 
