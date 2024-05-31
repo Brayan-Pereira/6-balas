@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./CSS/main.css">
     <link rel="stylesheet" href="./CSS/header.css">
     <link rel="stylesheet" href="./CSS/global.css">
+    <link rel="stylesheet" href="./CSS/loja_Online/searchbar.css">
 </head>
 
 <body>
@@ -59,10 +60,19 @@
 
         <section class="fuctions_sistem">
 
-            <a href=""><span class="material-symbols-outlined">
-                    search
-                </span>
-            </a>
+            <form class="search_bar" action="javascript:;" method="post">
+
+                <input type="search" name="search" id="inputSearch" placeholder="O que você procura?"
+                    autocomplete="off">
+
+                <label for="inputSearch">
+                    <span class="icon">
+
+                    </span>
+                </label>
+
+            </form>
+
             <a href=""> <span class="material-symbols-outlined">
                     shopping_cart
                 </span>
