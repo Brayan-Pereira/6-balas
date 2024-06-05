@@ -24,8 +24,8 @@
                 </div>
 
                 <form id="myForm" action="http://localhost/6-BALAS/DB_php/INSERT/processar_venda.php" method="post">
-                    <input type="text" name="input_hidden" id="input_hidden" required>
-                    <button type="button" class="btn-comprar" onclick="executarAntesDeEnviar()">Comprar Agora</button>
+                    <input type="text" name="input_hidden" id="input_hidden" style="display:none" required>
+                    <button type="button" class="btn-comprar">Comprar Agora</button>
                 </form>
                 <i class='bx bx-x' id="fechar-carrinho"></i>
 

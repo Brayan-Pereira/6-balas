@@ -6,6 +6,7 @@ let valorCompra = 0;
 let contadorProdutosCarrinho = 0;
 let produtosSelecionados = [];
 
+
 let usuario = JSON.parse(localStorage.getItem('usuario'));
 
 
@@ -21,6 +22,7 @@ if (document.readyState === 'loading') {
 } else {
     ready();
 }
+
 
 function ready() {
     var removeCarrinhoButtons = document.getElementsByClassName('remover-carrinho');
@@ -45,7 +47,17 @@ function buyButtonClicked() {
     if (valorCompra === 0) {
         alert('Selecione algum produto!');
     } else {
-        executarAntesDeEnviar();
+        if (usuario) {
+            console.log("Usuario: " + usuario.nome);
+            console.log("IDUsuario: " + usuario.idUser);
+            executarAntesDeEnviar();
+        } else {
+            console.log("Usuario não logado")
+
+            const novaURL = "http://localhost/6-balas/Pages/user/login.php";
+            window.location.href = novaURL;
+        }
+
     }
 }
 
@@ -70,11 +82,7 @@ function addCarrinhoClicked(event) {
     addProdutoCarrinho(title, preco, produtoImg, codigo, tipo);
     updatetotal();
 
-    if (usuario) {
-        console.log("Usuario: " + usuario.nome);
-        console.log("IDUsuario: " + usuario.idUser);
-    }
-    
+
 }
 
 function removeProdutoSelecionado(codigo) {
@@ -150,10 +158,9 @@ function executarAntesDeEnviar() {
     var inputHidden = document.getElementById("input_hidden");
     var jsonProdutos = JSON.stringify(produtosSelecionados);
     inputHidden.value = jsonProdutos;
-    const opcao = prompt("Digite 'sim' para confirmar");
-    if (opcao === "sim") {
-        document.getElementById("myForm").submit();
-    }
+
+    document.getElementById("myForm").submit();
+
 }
 
 function quantityChanged(event) {
@@ -172,11 +179,13 @@ function updatetotal() {
         var carrinhoBox = carrinhoBoxes[i];
         var priceElement = carrinhoBox.getElementsByClassName('preco-carrinho')[0];
         var quantityElement = carrinhoBox.getElementsByClassName('quantidade-carrinho')[0];
-        var price = parseFloat(priceElement.innerText.replace("R$", ""));
-        var quantity = quantityElement.value;
-        total = total + (price * quantity);
+        var priceText = priceElement.innerText.replace("R$", "").replace(",", "."); // Substitui vírgula por ponto
+        var price = parseFloat(priceText);
+        var quantity = parseInt(quantityElement.value);
+        total += price * quantity;
     }
     total = Math.round(total * 100) / 100;
     valorCompra = total;
+    localStorage.setItem('precoTotal', JSON.stringify(valorCompra));
     document.getElementsByClassName('preco-total')[0].innerText = 'R$' + total;
 }

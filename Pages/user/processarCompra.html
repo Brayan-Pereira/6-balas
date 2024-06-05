@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <title>QR code compra</title>
+<head>
+  <meta charset="UTF-8" />
+  <title>QR code compra</title>
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="http://localhost/6-BALAS/Components/processarCompra/image.jpeg" />
+  <link rel="stylesheet" href="http://localhost/6-BALAS/CSS/loja_Online/processarCompra.css" />
+  <script>
+    window.onload = function () {
+      loadUserData();
+    };
 
-    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost/6-BALAS/Components/processarCompra/image.jpeg" />
-    <link rel="stylesheet" href="http://localhost/6-BALAS/CSS/loja_Online/processarCompra.css" />
-  </head>
-  <body>
-    <main>
-      <img src="http://localhost/6-BALAS/Components/processarCompra/image-qr-code.jpeg" alt="QR code" width="288" height="288" />
+    function loadUserData() {
+      // Supondo que você tenha uma variável 'usuario' e 'valorCompra' definidas em algum lugar
+      var valorCompra = JSON.parse(localStorage.getItem('precoTotal'));
+      var usuario = JSON.parse(localStorage.getItem('usuario'));
+
+      // Selecionando os elementos HTML pelas suas IDs
+      var valorLabel = document.getElementById('valorCompra');
+      var saudacaoLabel = document.getElementById('saudacao');
+
+      console.log(valorCompra, usuario.nome)
+      // Definindo o texto das labels com os valores dinâmicos
+      valorLabel.textContent += " " + valorCompra.toFixed(2); // Formata o valor com duas casas decimais
+      saudacaoLabel.textContent = "Olá, " + usuario.nome + "! Bem-vindo à nossa loja!";
+    }
+  </script>
+</head>
+
+<body>
+  <main id="mainSection">
+    <div class="container">
+      <label id="saudacao"></label>
+      <img src="http://localhost/6-BALAS/Components/processarCompra/image-qr-code.jpeg" alt="QR code" width="288"
+        height="288" />
       <h1>Efetue sua compra</h1>
-      <input id="valor" type="text" name="valor" placeholder="Valor:" required>
-    </main>
-  </body>
+      <label id="valorCompra">Valor:</label>
+    </div>
+  </main>
+  <script src="http://localhost/6-BALAS/JS/systemLoja.js"></script>
+</body>
+
 </html>

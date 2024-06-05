@@ -10,7 +10,7 @@ if (isset($_POST['input_hidden'])) {
         echo "Erro na preparação da consulta: (" . $conn->errno . ") " . $conn->error;
     } else {
         $jsonProdutos = $_POST['input_hidden'];
-       
+
         $produtos = json_decode($jsonProdutos);
 
         // Verifica se a decodificação do JSON foi bem-sucedida
@@ -30,8 +30,8 @@ if (isset($_POST['input_hidden'])) {
 
             // Itera sobre os produtos e registra as vendas no banco de dados
             foreach ($produtos as $produto) {
-                $id_produto = (int)$produto->codigo; // Converte para número inteiro
-                $valor_unitario = $produto->preco;
+                $id_produto = (int) $produto->codigo; // Converte para número inteiro
+                $valor_unitario = str_replace(',', '.', $produto->preco); // Substitui a vírgula por ponto
                 echo "<script>console.log('$id_produto');</script>";
                 $quantidade = $produto->quant;
 
@@ -59,6 +59,8 @@ if (isset($_POST['input_hidden'])) {
             $conn->close();
 
             echo "Vendas registradas com sucesso!";
+            header("Location: http://localhost/6-balas/Pages/user/processarCompra.html");
+            exit();
         } else {
             echo "Nenhum produto para registrar vendas.";
         }
@@ -66,4 +68,3 @@ if (isset($_POST['input_hidden'])) {
 } else {
     echo "Campo input_hidden não encontrado";
 }
-?>
