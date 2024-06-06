@@ -129,7 +129,8 @@ function addProdutoCarrinho(title, preco, produtoImg, codigo, tipo) {
         codigo: codigo,
         tipo: tipo,
         count: contadorProdutosCarrinho,
-        quant: 1
+        quant: 1,
+        user: usuario
     });
 }
 

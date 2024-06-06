@@ -3,7 +3,7 @@
 include '../config.php';
 
 if (isset($_POST['input_hidden'])) {
-    $stmt = $conn->prepare("INSERT INTO vendas (codigo_venda, id_produto, quantidade, valor_unitario, data_venda) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO vendas (codigo_venda, id_produto, quantidade, valor_unitario, data_venda, id_cliente) VALUES (?, ?, ?, ?, ?, ?)");
 
     // Verifica se a consulta está preparada corretamente
     if (!$stmt) {
@@ -32,8 +32,8 @@ if (isset($_POST['input_hidden'])) {
             foreach ($produtos as $produto) {
                 $id_produto = (int) $produto->codigo; // Converte para número inteiro
                 $valor_unitario = str_replace(',', '.', $produto->preco); // Substitui a vírgula por ponto
-                echo "<script>console.log('$id_produto');</script>";
                 $quantidade = $produto->quant;
+                $codigo_usuario = $produto->user->idUser;
 
                 // Verifica se o id_produto existe na tabela produtos
                 $check_stmt = $conn->prepare("SELECT id FROM produtos WHERE id = ?");
@@ -44,7 +44,7 @@ if (isset($_POST['input_hidden'])) {
                 // Se o id_produto existe, proceda com a inserção na tabela vendas
                 if ($check_result->num_rows > 0) {
                     // Associa os parâmetros à consulta preparada e executa a inserção
-                    $stmt->bind_param("iiids", $codigo_venda, $id_produto, $quantidade, $valor_unitario, $data_venda);
+                    $stmt->bind_param("iiidsi", $codigo_venda, $id_produto, $quantidade, $valor_unitario, $data_venda, $codigo_usuario);
                     $stmt->execute();
                 } else {
                     echo "Produto com id $id_produto não encontrado na tabela produtos. Venda não registrada.";
@@ -68,3 +68,4 @@ if (isset($_POST['input_hidden'])) {
 } else {
     echo "Campo input_hidden não encontrado";
 }
+?>
