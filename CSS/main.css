@@ -118,7 +118,6 @@ main {
     border-color: var(--color-style);
     color: var(--color-style);
 }
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -127,7 +126,7 @@ body {
 }
 
 footer {
-    
+    background-color: #D4A017; /* Amarelo queimado */
     color: #fff;
     padding: 40px 20px;
     text-align: center;
@@ -155,7 +154,7 @@ footer {
     flex: 2;
     text-align: center;
     background-color: #D4A017; /* Amarelo queimado */
-    padding: 20px;
+    padding: 10px;
 }
 
 .footer-logo img {
@@ -179,8 +178,26 @@ footer {
     text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .footer-section, .footer-logo {
+        margin: 10px 0;
+    }
 
+    .footer-logo img {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo img {
+        max-width: 120px;
+    }
+}
 
 
 
