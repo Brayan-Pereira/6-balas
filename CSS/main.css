@@ -3,7 +3,7 @@
 main {
     height: 130vh;
     width: 100vw;
-    background-color: rgb(20, 20, 20);
+    
 
 }
 
@@ -41,7 +41,7 @@ main {
 .produtos h2 {
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    color: rgb(255, 251, 0);
+    color: rgb(255, 255, 255);
 
 }
 
@@ -65,7 +65,27 @@ main {
     cursor: pointer;
 }
 
+.btn2{
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    margin: 1.5rem auto 0 auto;
+    padding: 12px 20px;
+    border-radius: 20px;   
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
 
+.btn3{
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    margin: 1.5rem auto 0 auto;
+    padding: 12px 20px;
+    border-radius: 20px;   
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
 
 .item div {
     width: 300px;
@@ -99,13 +119,65 @@ main {
     color: var(--color-style);
 }
 
-a{
-    text-decoration: none;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+footer {
+    
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
 
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #D4A017; /* Amarelo queimado */
+    padding: 20px;
+    border-top: 5px solid #b8860b; /* Cor ligeiramente mais escura para a borda */
+}
 
+.footer-section {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+    background-color: #D4A017; /* Amarelo queimado */
+    padding: 10px;
+}
 
+.footer-logo {
+    flex: 2;
+    text-align: center;
+    background-color: #D4A017; /* Amarelo queimado */
+    padding: 20px;
+}
+
+.footer-logo img {
+    max-width: 200px;
+    height: auto;
+}
+
+.footer-section h3 {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section a {
+    color: #fff;
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
 
 
 

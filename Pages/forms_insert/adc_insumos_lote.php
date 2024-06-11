@@ -12,20 +12,13 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-
     <style>
         body {
             background-color: #000000;
-            /* Fundo preto */
             color: #FFFFFF;
-            /* Cor das letras */
             font-family: Arial, sans-serif;
-            padding: 20px;
-            /* Adicionando um pouco de espaço ao redor do conteúdo */
             margin: 0;
-            /* Remover margem padrão do corpo */
             padding: 0;
-            /* Remover preenchimento padrão do corpo */
         }
 
         header {
@@ -35,52 +28,82 @@
             left: 0;
             z-index: 1000;
             background-color: rgba(0, 0, 0, 0.8);
-            /* Fundo escuro */
             padding: 10px 20px;
-            /* Espaçamento interno do cabeçalho */
         }
 
         main {
             padding-top: 100px;
-            /* Adicionando espaço para o cabeçalho */
             display: flex;
             flex-direction: column;
-            /* Organizando os elementos em coluna */
             justify-content: center;
-            /* Centralizando o conteúdo verticalmente */
             align-items: center;
-            /* Centralizando o conteúdo horizontalmente */
             height: 100vh;
-            /* Definindo altura total da viewport */
         }
 
         h1 {
             margin-bottom: 40px;
-            /* Espaço abaixo do título "Atualizar Produto" */
-        }
-
-        h2 {
-            margin-top: 40px;
-            /* Espaço acima do título "Dados do Produto" */
-            margin-bottom: 20px;
-            /* Espaço abaixo do título "Dados do Produto" */
+            font-size: 2rem;
+            text-align: center;
         }
 
         form {
-            margin-top: 20px;
-            /* Espaço acima do formulário */
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        form label {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        form select,
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        form select {
+            background-color: #333;
+            color: #fff;
+        }
+
+        form input {
+            background-color: #444;
+            color: #fff;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        form button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 
 <body>
-<script src="http://localhost/6-balas/JS/menu.js" defer></script>
+    <script src="http://localhost/6-balas/JS/menu.js" defer></script>
     <header>
         <nav>
             <span class="material-symbols-outlined" id="btn_menu">
                 menu
             </span>
-    
+
             <section class="menu_hamburger" id="menu_hamburger">
                 <div class="topo_menu">
                     <img src="http://localhost/6-BALAS/Components/gun.png" alt="">
@@ -88,19 +111,17 @@
                         close
                     </span>
                 </div>
-    
+
                 <ul>
-                    <li><a href="////localhost/6-balas/index.html">Tela inicial</a></li>
-                    <li><a onclick="verificacao()" href="////localhost/6-balas/Pages/admin/admin.html">Área do administrador</a></li>
+                    <li><a href="http://localhost/6-balas/index.html">Tela inicial</a></li>
+                    <li><a onclick="verificacao()" href="http://localhost/6-balas/Pages/admin/admin.html">Área do administrador</a></li>
                 </ul>
             </section>
-
         </nav>
-    
+
         <div class="logo">
             <img src="http://localhost/6-BALAS/Components/header/logo/logo.png" alt="">
         </div>
-
     </header>
 
     <main>
@@ -133,7 +154,6 @@
                 }
                 ?>
             </select>
-            <br>
             <label for="insumo">Selecione o Insumo:</label>
             <select name="insumo" id="insumo" required>
                 <?php
@@ -151,12 +171,9 @@
                 }
                 ?>
             </select>
-            <br>
             <label for="quantidade">Quantidade Utilizada:</label>
             <input type="number" step="0.01" name="quantidade" id="quantidade" required>
-            <br>
             <button type="submit">Adicionar Insumo ao Lote</button>
-
         </form>
     </main>
 </body>

@@ -1,6 +1,6 @@
 // validação de entrada tela admin
 
-const userAdmin = "enzo viado"
+const userAdmin = "Admin"
 const passwordAdmin = "12345"
 
 
