@@ -3,12 +3,20 @@
 main {
     height: 130vh;
     width: 100vw;
-    
-
 }
 
-.opcoes_admin, .carousel {
+.opcoes_admin {
     position: absolute;
+    top: 20%;
+}
+
+.imagens_promocionais{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 50vh;
+    cursor: pointer;
+    width: 100vw;
     top: 20%;
 }
 
@@ -17,15 +25,18 @@ main {
     height: 50vh;
     cursor: pointer;
     width: 100vw;
+    align-items: center;
 }
 
 .carousel button {
+    position: absolute;
     background-color: var(--color-fundo-background);
     opacity: 0.5;
     width: 5rem;
     height: 5rem;
     margin: 6rem 1rem;
     border-radius: 50%;
+    top: 25%;
 }
 
 .produtos {
@@ -37,14 +48,11 @@ main {
     padding: 3rem;
 }
 
-
 .produtos h2 {
     font-family: 'Poppins', sans-serif;
     text-align: center;
     color: rgb(255, 255, 255);
-
 }
-
 
 .item {
     display: flex;
@@ -65,28 +73,9 @@ main {
     cursor: pointer;
 }
 
-.btn2{
-    display: flex;
-    font-family: 'Poppins', sans-serif;
-    margin: 1.5rem auto 0 auto;
-    padding: 12px 20px;
-    border-radius: 20px;   
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
+.btn1:hover{
+    background-color: var(--color-style);
 }
-
-.btn3{
-    display: flex;
-    font-family: 'Poppins', sans-serif;
-    margin: 1.5rem auto 0 auto;
-    padding: 12px 20px;
-    border-radius: 20px;   
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-}
-
 .item div {
     width: 300px;
     height: 300px;
@@ -97,14 +86,14 @@ main {
     height: 100%;
 }
 
-.opcoes_admin{
+.opcoes_admin {
     padding: 2rem 3rem;
     color: var(--color-title);
     gap: 2rem;
     text-align: center;
 }
 
-.opcoes_admin button{
+.opcoes_admin button {
     padding: 1rem 2rem;
     font-size: 20px;
     margin: 2rem 1rem;
@@ -114,115 +103,115 @@ main {
     color: var(--color-title);
 }
 
-.opcoes_admin button:hover{
+.opcoes_admin button:hover {
     border-color: var(--color-style);
     color: var(--color-style);
 }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+        /* Media queries para largura */
+        @media (max-width: 2200px) {
+            .imagens_promocionais {
+                height: 60vh;
+            }
 
-footer {
-    background-color: #D4A017; /* Amarelo queimado */
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-}
+            .produtos {
+                top: 80%;
+            }
 
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: #D4A017; /* Amarelo queimado */
-    padding: 20px;
-    border-top: 5px solid #b8860b; /* Cor ligeiramente mais escura para a borda */
-}
+            footer{
+                top: 150%;
+            }
+        }
+        
 
-.footer-section {
-    flex: 1;
-    margin: 10px;
-    min-width: 200px;
-    background-color: #D4A017; /* Amarelo queimado */
-    padding: 10px;
-}
+        @media (max-width: 2000px) {
+            .produtos {
+                gap: 5rem;
+            }
+        }
 
-.footer-logo {
-    flex: 2;
-    text-align: center;
-    background-color: #D4A017; /* Amarelo queimado */
-    padding: 10px;
-}
+        @media (max-width: 1700px) {
+            .imagens_promocionais {
+                height: 40vh;
+                top: 30%;
+            }
+        }
 
-.footer-logo img {
-    max-width: 200px;
-    height: auto;
-}
+        @media (max-width: 1600px) {
+            .imagens_promocionais {
+                height: 40vh;
+            }
 
-.footer-section h3 {
-    border-bottom: 2px solid #fff;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
+            .produtos {
+                top: 80%;
+            }
 
-.footer-section p, .footer-section a {
-    color: #fff;
-    text-decoration: none;
-    margin: 5px 0;
-}
+            footer{
+                top: 100%;
+            }
+        }
 
-.footer-section a:hover {
-    text-decoration: underline;
-}
+        @media (max-width: 1200px) {
+            .produtos {
+                gap: 3rem;
+            }
+        }
 
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-    }
+        @media (max-width: 1100px) {
+            .imagens_promocionais {
+                height: 30vh;
+            }
 
-    .footer-section, .footer-logo {
-        margin: 10px 0;
-    }
+            .produtos {
+                top: 70%;
+            }
 
-    .footer-logo img {
-        max-width: 150px;
-    }
-}
+            footer{
+                top: 120%;
+            }
+        }
 
-@media (max-width: 480px) {
-    .footer-logo img {
-        max-width: 120px;
-    }
-}
+        @media (max-width: 1000px) {
+            .imagens_promocionais {
+                height: 30vh;
+            }
 
 
+            footer{
+                top: 250%;
+            }
+        }
+        @media (max-width: 900px) {
+            .produtos {
+                gap: 1.5rem;
+            }
+        }
 
+        @media (max-width: 700px) {
 
+            .imagens_promocionais{
+                display: none;
+            }
+            .produtos {
+                top: 20%;
+            }
+            footer{
+                top: 250%;
+            }
+        }
 
-@media (max-width : 1400px){
-    .produtos {
-        top: 70%;
-    }
-}
+        @media (max-width: 500px) {
+            .produtos {
+                gap: 0.5rem;
+            }
+        }
 
-@media (max-width : 1100px){
-    .produtos {
-        top: 60%;
-    }
-}
+        
 
-@media (max-width : 800px){
-    .produtos {
-        top: 50%;
-    }
-}
-
-@media (max-width : 500px){
-    .produtos {
-        top: 40%;
-    }
-}
+     

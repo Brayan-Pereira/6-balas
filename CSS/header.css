@@ -87,4 +87,8 @@ header .material-symbols-outlined{
 }
 
 
-
+section.fuctions_sistem{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
