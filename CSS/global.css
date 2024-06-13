@@ -11,25 +11,29 @@
     --color-style: rgb(251, 255, 27)
 }
 
-
-body, html {
+body {
+    height: 100vh;
     width: 100%;
     background-color: var(--color-fundo-background);
-    margin: 0;
-    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media  screen and (max-width: 1200px) {
     
-    display: flex;
-    flex-direction: column;
+    .produtos{
+        gap: 10rem;
+    }
 }
-
-a{
-    text-decoration: none;
-}
-
-
-
-
-
-
-
-

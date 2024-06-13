@@ -10,6 +10,11 @@ header {
     z-index: 20;
 }
 
+.fuctions_sistem{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
 header h1{
     color: var(--color-title);
     font-weight: 400;
@@ -87,8 +92,4 @@ header .material-symbols-outlined{
 }
 
 
-section.fuctions_sistem{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
+

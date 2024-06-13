@@ -98,6 +98,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Código do Fornecedor</th>
                     <th scope="col">Insumo</th>
+                    <th scope="col">Unidade de Medida</th>
                     <th scope="col">Quantidade</th>
                 </tr>
             </thead>
@@ -118,6 +119,7 @@
                         echo "<td>" . $row["codfornecedor"] . "</td>";
                         echo "<td>" . $row["insumo"] . "</td>";
                         echo "<td>" . $row["quantidade"] . "</td>";
+                        echo "<td>" . $row["quant_number"] . "</td>";
                         echo "</tr>";
                     }
                 } else {

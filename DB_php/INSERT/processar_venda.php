@@ -8,6 +8,9 @@ if (isset($_POST['input_hidden'])) {
     // Verifica se a consulta está preparada corretamente
     if (!$stmt) {
         echo "Erro na preparação da consulta: (" . $conn->errno . ") " . $conn->error;
+        // Redireciona para a página de login
+        header("Location: http://localhost/6-balas/Pages/user/login.php");
+        exit();
     } else {
         $jsonProdutos = $_POST['input_hidden'];
 
@@ -16,9 +19,9 @@ if (isset($_POST['input_hidden'])) {
         // Verifica se a decodificação do JSON foi bem-sucedida
         if (json_last_error() !== JSON_ERROR_NONE) {
             echo "Erro ao decodificar JSON: " . json_last_error_msg();
-            // Redireciona de volta à mesma página para tentar novamente
-            header("Location: " . $_SERVER['REQUEST_URI']);
-            exit;
+            // Redireciona para a página de login
+            header("Location: http://localhost/6-balas/Pages/user/login.php");
+            exit();
         }
 
         // Verifica se $produtos é um array ou um objeto
@@ -43,14 +46,30 @@ if (isset($_POST['input_hidden'])) {
 
                 // Se o id_produto existe, proceda com a inserção na tabela vendas
                 if ($check_result->num_rows > 0) {
-                    // Associa os parâmetros à consulta preparada e executa a inserção
-                    $stmt->bind_param("iiidsi", $codigo_venda, $id_produto, $quantidade, $valor_unitario, $data_venda, $codigo_usuario);
-                    $stmt->execute();
+                    // Verifica se o código do usuário existe na tabela de usuários
+                    $check_user_stmt = $conn->prepare("SELECT id FROM clientes WHERE id = ?");
+                    $check_user_stmt->bind_param("i", $codigo_usuario);
+                    $check_user_stmt->execute();
+                    $check_user_result = $check_user_stmt->get_result();
+
+                    if ($check_user_result->num_rows > 0) {
+                        // Associa os parâmetros à consulta preparada e executa a inserção
+                        $stmt->bind_param("iiidsi", $codigo_venda, $id_produto, $quantidade, $valor_unitario, $data_venda, $codigo_usuario);
+                        $stmt->execute();
+                    } else {
+                        echo "ID de cliente inválido. Venda não registrada.";
+                        // Redireciona para a página de login
+                        header("Location: http://localhost/6-balas/Pages/user/login.php");
+                        exit();
+                    }
+
+                    // Fecha a declaração de verificação de usuário
+                    $check_user_stmt->close();
                 } else {
                     echo "Produto com id $id_produto não encontrado na tabela produtos. Venda não registrada.";
                 }
 
-                // Fecha a declaração de verificação
+                // Fecha a declaração de verificação de produto
                 $check_stmt->close();
             }
 
