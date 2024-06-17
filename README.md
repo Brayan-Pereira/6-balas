@@ -1,48 +1,46 @@
-Descrição Geral do Projeto:
+# Loja Online - Projeto de E-commerce
 
-O projeto é uma loja online desenvolvida para venda de produtos variados, onde os clientes podem navegar pelos produtos, adicioná-los ao carrinho de compras e realizar o checkout para efetuar a compra. O sistema é composto por uma interface de usuário interativa e responsiva, que permite uma experiência de compra intuitiva.
+## Descrição Geral
 
-Funcionalidades Principais:
+Este projeto é uma plataforma de e-commerce desenvolvida para a venda de uma ampla gama de produtos. A loja online oferece uma experiência de compra intuitiva e interativa, permitindo que os clientes naveguem pelos produtos, adicionem itens ao carrinho e finalizem suas compras com facilidade.
 
-Navegação de Produtos: Os clientes podem visualizar uma variedade de produtos organizados em diferentes categorias, facilitando a busca e a navegação.
-
-Adicionar ao Carrinho: Os clientes podem adicionar produtos ao carrinho de compras com apenas um clique, facilitando a seleção e a compra de vários itens.
-
-Gerenciamento de Carrinho: Os clientes podem revisar e modificar os itens no carrinho de compras, incluindo a alteração da quantidade e a remoção de produtos.
-
-Checkout: Os clientes podem proceder para o checkout, fornecendo informações de envio e pagamento para concluir a compra.
-
-Autenticação de Usuário: Os clientes podem criar uma conta e fazer login para acessar recursos adicionais, como histórico de pedidos e informações de perfil.
-
-Ferramentas Utilizadas:
-
-Front-end: HTML, CSS e JavaScript foram utilizados para criar a interface de usuário interativa e responsiva. O design foi estilizado utilizando CSS para proporcionar uma experiência visual atraente e consistente em diferentes dispositivos.
-
-Back-end: PHP foi utilizado para processar as solicitações do cliente, gerenciar o carrinho de compras, validar informações do usuário e processar pagamentos.
-
-Banco de Dados: Um banco de dados MySQL foi utilizado para armazenar informações sobre produtos, clientes, pedidos e outras informações relevantes para a operação da loja online.
-
-LocalStorage: Foi utilizado o armazenamento local do navegador (LocalStorage) para armazenar temporariamente informações como o valor total da compra, dados do usuário e produtos selecionados no carrinho, proporcionando uma experiência mais personalizada e rápida para o cliente.
-
-Git: O controle de versão Git foi utilizado para gerenciar o código-fonte do projeto, permitindo colaboração entre os membros da equipe e o rastreamento de alterações ao longo do desenvolvimento.
-
-Linguagens e Tecnologias:
-
-HTML (HyperText Markup Language): Utilizado para estruturar o conteúdo da página web, incluindo a criação de elementos como botões, formulários e imagens.
-
-CSS (Cascading Style Sheets): Utilizado para estilizar a aparência dos elementos HTML, incluindo layout, cores, fontes e animações.
-
-JavaScript: Utilizado para adicionar interatividade à página web, incluindo a validação de formulários, manipulação do DOM e comunicação com o servidor.
-
-PHP (Hypertext Preprocessor): Utilizado para processar solicitações do cliente no servidor, gerar conteúdo dinâmico e interagir com o banco de dados.
-
-MySQL: Utilizado para criar e gerenciar o banco de dados relacional que armazena informações sobre produtos, clientes, pedidos e outras entidades relacionadas à operação da loja online.
+## Funcionalidades Principais
 
 
-EM PACERIA COM:
+- **Navegação de Produtos**: Os clientes podem explorar uma variedade de produtos categorizados, facilitando a busca e a seleção de itens.
+- **Adicionar ao Carrinho**: Com um simples clique, os clientes podem adicionar produtos ao carrinho de compras.
 
-Rafael Gonçalves Dulcio:
-em manutenção
+- **Gerenciamento de Carrinho**: Os clientes têm a capacidade de revisar, atualizar a quantidade de itens e remover produtos do carrinho.
+- **Checkout**: Processo de finalização de compra simplificado, onde os clientes fornecem informações de envio e pagamento.
 
-Enzo Luiz Berlesi Salles:
-https://github.com/EnzoBerlesi
+- **Autenticação de Usuário**: Os clientes podem criar contas e fazer login para acessar recursos adicionais, como histórico de pedidos e informações pessoais.
+
+## Ferramentas Utilizadas
+
+
+- **Front-end**: HTML, CSS e JavaScript foram combinados para criar uma interface de usuário responsiva e interativa.
+- **Back-end**: PHP foi empregado para processar requisições do cliente, gerenciar o carrinho de compras e realizar transações de pagamento.
+
+- **Banco de Dados**: MySQL foi utilizado para armazenar dados de produtos, clientes, pedidos e outras informações essenciais.
+- **LocalStorage**: O armazenamento local do navegador foi utilizado para manter informações temporárias, como o valor total da compra e produtos selecionados.
+
+- **Git**: O controle de versão Git foi aplicado para gerenciar o código-fonte e facilitar a colaboração entre desenvolvedores.
+
+## Linguagens e Tecnologias
+
+
+- **HTML**: Estruturação do conteúdo da página web, incluindo botões, formulários e imagens.
+- **CSS**: Estilização visual dos elementos HTML, incluindo layout, cores, fontes e animações.
+
+- **JavaScript**: Adição de interatividade à página, como validação de formulários, manipulação do DOM e comunicação com o servidor.
+- **PHP**: Processamento de requisições do cliente no servidor e geração de conteúdo dinâmico.
+
+- **MySQL**: Gerenciamento de um banco de dados relacional para armazenar informações críticas do e-commerce.
+
+## Equipe de Desenvolvimento
+
+
+- **Rafael Gonçalves Dulcio**: Responsável pela manutenção do projeto.
+- **Enzo Luiz Berlesi Salles**: [GitHub Profile](https://github.com/EnzoBerlesi)
+
+Este README.md fornece uma visão geral do projeto, destacando suas funcionalidades, ferramentas e tecnologias utilizadas, além de apresentar os membros da equipe de desenvolvimento. Para mais informações técnicas ou para contribuir para o projeto, visite nosso repositório no GitHub.
