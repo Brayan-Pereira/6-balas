@@ -40,7 +40,7 @@ Este projeto é uma plataforma de e-commerce desenvolvida para a venda de uma am
 ## Equipe de Desenvolvimento
 
 
-- **Rafael Gonçalves Dulcio**: Responsável pela manutenção do projeto.
+- **Rafael Gonçalves Dulcio**: github em manutenção
 - **Enzo Luiz Berlesi Salles**: [GitHub Profile](https://github.com/EnzoBerlesi)
 
 Este README.md fornece uma visão geral do projeto, destacando suas funcionalidades, ferramentas e tecnologias utilizadas, além de apresentar os membros da equipe de desenvolvimento. Para mais informações técnicas ou para contribuir para o projeto, visite nosso repositório no GitHub.
