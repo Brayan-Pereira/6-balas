@@ -1,6 +1,6 @@
-# Loja Online - Projeto de E-commerce
+# Cervejaria - 6 balas
 
-## Descrição Geral
+## Descrição Geral do Projeto
 
 Este projeto é uma plataforma de e-commerce desenvolvida para a venda de uma ampla gama de produtos. A loja online oferece uma experiência de compra intuitiva e interativa, permitindo que os clientes naveguem pelos produtos, adicionem itens ao carrinho e finalizem suas compras com facilidade.
 
